@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const csvUrl =
-  "https://gist.githubusercontent.com/curran/b236990081a24761f7000567094914e0/raw/cssNamedColors.csv";
+const height = 500;
+const width = 960;
+const circleRadius = 30;
 
 const InteractionContainer = () => {
-  const [data, setData] = useState("");
+  const [circleX, setCircleX] = useState(width / 2);
+  const [circleY, setCircleY] = useState(height / 2);
 
-  useEffect(() => {
-    setData("some data");
-  }, []);
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    setCircleX(clientX);
+    setCircleY(clientY);
+  };
 
   return (
-    <div style={{ margin: 20 }}>
-      <h1>Interaction Container</h1>
-      <p>{data}</p>
-    </div>
+    <svg height={height} width={width} onMouseMove={handleMouseMove}>
+      <circle cx={circleX} cy={circleY} r={circleRadius} />
+    </svg>
   );
 };
 
