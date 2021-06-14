@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import useWindowDimensions from "./hooks/useWindowDimensions";
 
-const height = 500;
-const width = 960;
 const circleRadius = 30;
 
 const InteractionContainer = () => {
+  const { height, width } = useWindowDimensions();
   const [circleX, setCircleX] = useState(width / 2);
   const [circleY, setCircleY] = useState(height / 2);
 
