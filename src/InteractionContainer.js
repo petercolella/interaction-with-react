@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import useWindowDimensions from "./hooks/useWindowDimensions";
 
 const circleRadius = 30;
@@ -8,11 +8,11 @@ const InteractionContainer = () => {
   const [circleX, setCircleX] = useState(width / 2);
   const [circleY, setCircleY] = useState(height / 2);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     const { clientX, clientY } = e;
     setCircleX(clientX);
     setCircleY(clientY);
-  };
+  }, []);
 
   return (
     <svg height={height} width={width} onMouseMove={handleMouseMove}>
